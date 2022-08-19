@@ -6,6 +6,7 @@ use crate::Error;
 ///
 /// According to [RFC 1035 Section 3.2.2](https://tools.ietf.org/rfc/rfc1035#section-3.2.2)
 /// and [RFC 1035 Section 3.2.3](https://tools.ietf.org/rfc/rfc1035#section-3.2.3).
+/// and [RFC 3596 Section 2.1](https://www.rfc-editor.org/rfc/rfc3596#section-2.1)
 #[derive(Copy, Clone, Debug, PartialEq)]
 #[repr(u16)]
 pub enum QueryKind {
@@ -25,6 +26,7 @@ pub enum QueryKind {
   MINFO = 14,
   MX = 15,
   TXT = 16,
+  AAAA = 28,
   AXFR = 252,
   MAILB = 253,
   MAILA = 254,
@@ -51,6 +53,7 @@ impl From<u16> for QueryKind {
       14 => Self::MINFO,
       15 => Self::MX,
       16 => Self::TXT,
+      28 => Self::AAAA,
       252 => Self::AXFR,
       253 => Self::MAILA,
       254 => Self::MAILB,
